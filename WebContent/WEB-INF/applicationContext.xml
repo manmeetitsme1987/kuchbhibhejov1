@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+   <!-- Initialization for data source -->
+   <bean id="dataSource" 
+      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+      <property name="url" value="jdbc:mysql://localhost:3306/kuchbhibhejov2"/>
+      <property name="username" value="manmeet"/>
+      <property name="password" value="kuchbhibhejo"/>
+   </bean>
+
+   <!-- Definition for studentJDBCTemplate bean -->
+   <bean id="adminJDBCTemplate" 
+      class="com.kuchbhibhejo.template.KuchBhiBhejoAdminJDBCTemplate">
+      <property name="dataSource"  ref="dataSource" />    
+   </bean>
+   
+   <!--   Setting application context variables starting from database -->
+   <bean id="contextApplicationProvider" class="com.kuchbhibhejo.util.ApplicationContextProvider" />
+      
+</beans>
